@@ -1,5 +1,3 @@
-package com.example.forassignment.level3
-
 class Calculator {
     // 추가연산인지 확인하기 위한 변수
     private var isFirst = true
