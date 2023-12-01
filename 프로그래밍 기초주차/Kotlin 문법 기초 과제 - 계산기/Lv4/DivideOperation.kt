@@ -1,11 +1,13 @@
 // 수정 버전
+import kotlin.math.round
+
 class DivideOperation: AbstractOperation() {
     override fun operation(n1: Double, n2: Double): Double {
         require(n2 != 0.0) {
             ArithmeticException("Divide by Zero")
         }
 
-        return n1 / n2
+        return round((n1 / n2) * 100) / 100
     }
 }
 
