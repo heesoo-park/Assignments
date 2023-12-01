@@ -6,18 +6,18 @@ class Calculator {
     fun selectSymbol() {
         // 연산 선택
         println("원하는 연산을 선택해주세요.")
-        println("1. 더하기  2. 빼기  3. 곱하기  4. 나누기  5. 종료")
+        println("1. 더하기  2. 빼기  3. 곱하기  4. 나누기  5. 나머지 6. 종료")
         var symbol = readln().toInt()
 
         // 제시된 범위 바깥이면 다시 유효한 연산 선택 유도
-        while (symbol > 5 || symbol <= 0) {
+        while (symbol > 6 || symbol <= 0) {
             println("에러 : 유효하지 않은 연산입니다.")
             println("다시 연산을 선택해주세요.")
-            println("1. 더하기  2. 빼기  3. 곱하기  4. 나누기  5. 종료")
+            println("1. 더하기  2. 빼기  3. 곱하기  4. 나누기  5. 나머지  6. 종료")
             symbol = readln().toInt()
         }
 
-        if (symbol == 5) return
+        if (symbol == 6) return
 
         // 연산을 적용할 두 수 입력
         println("두 수를 입력해주세요(공백로 구분)")
@@ -48,18 +48,18 @@ class Calculator {
 
             println("추가로 원하는 연산을 선택해주세요.")
             println("계산을 멈추고 싶으면 5를 눌러주세요.")
-            println("1. 더하기  2. 빼기  3. 곱하기  4. 나누기  5. 종료")
+            println("1. 더하기  2. 빼기  3. 곱하기  4. 나누기  5. 나머지  6. 종료")
             symbol = readln().toInt()
 
-            while (symbol > 5 || symbol <= 0) {
+            while (symbol > 6 || symbol <= 0) {
                 println("에러 : 유효하지 않은 연산입니다.")
                 println("다시 연산을 선택해주세요.")
-                println("계산을 멈추고 싶으면 5를 눌러주세요.")
-                println("1. 더하기  2. 빼기  3. 곱하기  4. 나누기  5. 종료")
+                println("계산을 멈추고 싶으면 6을 눌러주세요.")
+                println("1. 더하기  2. 빼기  3. 곱하기  4. 나누기  5. 나머지  6. 종료")
                 symbol = readln().toInt()
             }
 
-            if (symbol == 5) break
+            if (symbol == 6) break
 
             // 이후 연산의 초기값과 연산할 수를 입력
             println("숫자 하나를 입력해주세요")
@@ -73,6 +73,7 @@ class Calculator {
             2 -> substract(n1, n2)
             3 -> multiply(n1, n2)
             4 -> divide(n1, n2)
+            5 -> modulo(n1, n2)
             else -> 0 // 위에서 정확한 연산 번호를 입력받고 들어오기 때문에 걸리지 않는 조건
         }
     }
@@ -81,6 +82,7 @@ class Calculator {
     private fun substract(n1: Int, n2: Int) = n1 - n2
     private fun multiply(n1: Int, n2: Int) = n1 * n2
     private fun divide(n1: Int, n2: Int) = if (n2 != 0) n1 / n2 else Int.MIN_VALUE
+    private fun modulo(n1: Int, n2: Int) = if (n2 != 0) n1 % n2 else Int.MIN_VALUE
 
     // 안내 메세지
     fun startMessage() = println("계산기가 시작되었습니다.\n")
