@@ -29,8 +29,8 @@ fun main() = with(System.`in`.bufferedReader()) {
 }
 
 // 이전 버전
-fun main() = with(System.`in`.bufferedReader()) {
-    val calculator = Calculator()
+// fun main() = with(System.`in`.bufferedReader()) {
+//     val calculator = Calculator()
 
-    calculator.calculate()
-}
+//     calculator.calculate()
+// }
