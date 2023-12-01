@@ -10,7 +10,7 @@ fun main() = with(System.`in`.bufferedReader()) {
         var n2: Double = 0.0
 
         // 제시된 범위 바깥이면 다시 유효한 연산 선택 유도
-        while (symbol > 5 || symbol <= 0) {
+        while (symbol > 6 || symbol <= 0) {
             println("에러 : 유효하지 않은 연산입니다.")
             println("다시 연산을 선택해주세요.")
             println("1. 더하기  2. 빼기  3. 곱하기  4. 나누기  5. 나머지  6. 종료")
