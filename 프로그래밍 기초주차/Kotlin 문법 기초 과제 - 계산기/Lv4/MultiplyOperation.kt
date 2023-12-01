@@ -1,6 +1,8 @@
 // 수정 버전
+import kotlin.math.round
+
 class MultiplyOperation: AbstractOperation() {
-    override fun operation(n1: Double, n2: Double): Double = n1 * n2
+    override fun operation(n1: Double, n2: Double): Double = round((n1 * n2) * 100) / 100
 }
 
 // 이전 버전
