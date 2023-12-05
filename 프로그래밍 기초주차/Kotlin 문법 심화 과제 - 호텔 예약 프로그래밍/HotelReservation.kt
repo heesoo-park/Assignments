@@ -12,8 +12,6 @@ class HotelReservation {
 
     // 호텔 예약한 인원들에 대한 정보가 담겨있는 리스트
     private val reservationPersonList = mutableListOf<ReservationPerson>()
-    // 인원들의 초기금
-    private val initialMoney = 100000
 
     // 예약에 필요한 정보들을 미리 선언 및 초기화
     var name: String = ""
@@ -31,6 +29,8 @@ class HotelReservation {
 
     // 예약 구현
     fun reservation() {
+        // 인원들의 초기금
+        val initialMoney = (10000..50000).random()
         // 예약금 랜덤으로 정해짐
         val reservationFee = Random.nextInt(1000) * 10
 
@@ -43,7 +43,7 @@ class HotelReservation {
         money = initialMoney - reservationFee
 
         // 예약 명단 리스트에 ReservationPerson 타입으로 저장
-        reservationPersonList.add(ReservationPerson(name, roomNum, checkIn, checkOut, money))
+        reservationPersonList.add(ReservationPerson(name, roomNum, checkIn, checkOut, money, reservationFee))
         println("호텔 예약이 완료되었습니다.")
         println("호텔 예약비 ${reservationFee}원이 빠져나갔습니다.")
 
@@ -92,8 +92,8 @@ class HotelReservation {
         val findName = readln()
         reservationPersonList.forEach {
             if (findName == it.name) {
-                println("1. 초기 금액으로 ${initialMoney}원 입금되었습니다.")
-                println("2. 예약금으로 ${initialMoney - it.money}원 출금되었습니다.")
+                println("1. 초기 금액으로 ${it.money + it.reservationFee}원 입금되었습니다.")
+                println("2. 예약금으로 ${it.reservationFee}원 출금되었습니다.")
                 return
             }
         }
@@ -159,14 +159,15 @@ class HotelReservation {
                         println("체크인 14일 이전 취소 예약금의 80% 환불")
                         println("체크인 30일 이전 취소 예약금의 100% 환불")
 
+                        val curPerson = reservationPersonList[countIdx[operation.toInt() - 1]]
                         val todayDate = LocalDate.now()
                         // 체크인하는 날
-                        val cancelCheckIn = reservationPersonList[countIdx[operation.toInt() - 1]].checkIn
+                        val cancelCheckIn = curPerson.checkIn
                         val cancelCheckInDate = LocalDate.from(dtf.parse(cancelCheckIn))
                         // 오늘부터 체크인날까지의 차이를 구함
                         val diff = Duration.between(todayDate.atStartOfDay(), cancelCheckInDate.atStartOfDay())
                         // 예약금
-                        val reservationFee = initialMoney - reservationPersonList[countIdx[operation.toInt() - 1]].money
+                        val reservationFee = curPerson.reservationFee
                         // 오늘부터 체크인 날까지의 차이로 정해지는 예약금 환불
                         when (diff.toDays().toInt()) {
                             in 0..3 -> println("결과 : 예약금 환불 불가")
