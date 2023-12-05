@@ -5,5 +5,6 @@ data class ReservationPerson(
     var roomNum: Int,       // 방 번호
     var checkIn: String,    // 체크인
     var checkOut: String,   // 체크아웃
-    val money: Int          // 소지금
+    val money: Int,         // 소지금
+    val reservationFee: Int // 지불한 예약금
 )
