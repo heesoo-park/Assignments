@@ -1,4 +1,4 @@
-// 수정 버전 : 23.12.05
+// 최종 수정 : 23.12.08
 
 // 들어온 문자열이 숫자로만 이루어져 있는지 판별하는 함수
 fun isInteger(s: String): Boolean {
@@ -37,9 +37,58 @@ fun main() {
             4 -> break
             5 -> hotelReservation.feeList()
             6 -> hotelReservation.changeReservation()
+            7 -> hotelReservation.makeReceipt()
+            8 -> hotelReservation.checkReceipt()
         }
     }
 }
+
+
+
+
+
+// // 수정 버전 : 23.12.05
+
+// // 들어온 문자열이 숫자로만 이루어져 있는지 판별하는 함수
+// fun isInteger(s: String): Boolean {
+//     return try {
+//         s.toInt()
+//         true
+//     } catch (e: Exception) {
+//         false
+//     }
+// }
+
+// fun main() {
+//     // 호텔 예약 클래스 객체 생성
+//     val hotelReservation = HotelReservation()
+//     // 메뉴 선택을 저장하는 변수
+//     var selectedMenu: String
+
+//     while(true) {
+//         // 초기 메세지
+//         hotelReservation.initialMessage()
+//         // 메뉴 선택
+//         selectedMenu = readln()
+
+//         // 변수값이 숫자인지 확인
+//         // 아니라면 처음으로 이동
+//         if (!isInteger(selectedMenu)) {
+//             System.err.println("메뉴 입력은 숫자만 가능합니다.")
+//             continue
+//         }
+
+//         // 선택된 메뉴에 따라서 함수 호출
+//         when (selectedMenu.toInt()) {
+//             1 -> hotelReservation.reservation()
+//             2 -> hotelReservation.reservationList()
+//             3 -> hotelReservation.reservationSortedList()
+//             4 -> break
+//             5 -> hotelReservation.feeList()
+//             6 -> hotelReservation.changeReservation()
+//         }
+//     }
+// }
 
 
 
