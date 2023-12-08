@@ -1,3 +1,4 @@
+// 최종 수정 : 23.12.08
 // 수정 버전 : 23.12.05
 
 data class ReservationPerson(
